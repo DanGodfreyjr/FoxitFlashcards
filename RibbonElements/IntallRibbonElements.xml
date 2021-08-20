@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoxitPlugin version="1">
+	<Property 
+		Name="RibbonElements"
+		FriendlyName="RibbonElements"
+		Description="RibbonElements"
+		PIPath="RibbonElements.fpi"
+		LoadBehavior="3"
+		MinVersion=""
+	/>
+</FoxitPlugin>
