@@ -32,11 +32,11 @@ RibbonElements.cpp
 #endif
 
 
-struct card {
-	CString title = L"";
-	int pageNumber = -1;
-	CString answer = L"";
-};
+//struct card {
+	//CString title = L"";
+	//int pageNumber = -1;
+	//CString answer = L"";
+//};
 
 
 //

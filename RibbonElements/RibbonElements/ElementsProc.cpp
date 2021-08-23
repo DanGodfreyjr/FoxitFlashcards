@@ -60,9 +60,8 @@ void CElementsProc::OnButtonExecuteProc(void* clientDate)//save set
 void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 {
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
-	//FRSysShowMessageBox((FS_LPCWSTR)L"TODO: changed to opening flashcard panel", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
-
-	//task; turn the highlighted text into a CString and save it to temp
+	
+	//DONE: turn the highlighted text into a CString and save it to temp
 	CString temp = L"";
 
 	FR_Document pDoc = FRAppGetActiveDocOfPDDoc();
@@ -86,6 +85,12 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 	//FS_LPCWSTR inputfile = L"C:\\Users\\Administrator\\Desktop\\PDF\\06ma.pdf";
 	//FR_Document frDocument = FRDocOpenFromFile(inputfile, (FS_LPCSTR)L"", true, true); //shows how to load a PDF and display it
 }
+
+struct card {
+	CString title = L"";
+	int pageNumber = -1;
+	CString answer = L"";
+};
 
 void CElementsProc::OnButtonExecuteProc3(void* clientDate) //go to first
 {
