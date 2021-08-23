@@ -65,14 +65,20 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 	//task; turn the highlighted text into a CString and save it to temp
 	CString temp = L"";
 
+	FR_Document pDoc = FRAppGetActiveDocOfPDDoc();
+	if (pDoc == NULL) {
+		return;
+	}
+	FR_TextSelectTool textSelectTool = FRDocGetTextSelectTool(pDoc);
+	FS_WideString wtext = FSWideStringNew(); //Initialize FS_WideString
+	FRTextSelectToolGetSelectedText(textSelectTool, &wtext);
+	const wchar_t* ctext = FSWideStringCastToLPCWSTR(wtext);//convert to a a data type that can output the in a message box.
+	FS_WideString fswsShowMsg = FSWideStringNew3(ctext, wcslen(ctext) * sizeof(WCHAR));
 
-
-
-
-
+	temp = ctext;
 
 	NewFlashcard openMenu;
-	//openMenu.Initialize(temp);
+	openMenu.setAnswer(temp);
 	openMenu.DoModal();
 	
 
@@ -85,6 +91,13 @@ void CElementsProc::OnButtonExecuteProc3(void* clientDate) //go to first
 {
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
 	CString temp = L"Name of first card"; //cstring element of first object in data type vector
+
+	//TODO:: loops through the study set
+
+
+
+
+
 	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
 
 	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());

@@ -6,7 +6,6 @@
 #include "RibbonElements.h"
 #include "NewFlashcard.h"
 #include "afxdialogex.h"
-#include <string>
 
 
 // NewFlashcard dialog
@@ -17,6 +16,11 @@ NewFlashcard::NewFlashcard(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_NEWCARD, pParent)
 {
 
+}
+
+void NewFlashcard::setAnswer(CString temp)
+{
+	answer = temp;
 }
 
 NewFlashcard::~NewFlashcard()
@@ -30,14 +34,24 @@ void NewFlashcard::DoDataExchange(CDataExchange* pDX)
 	DDX_CBString(pDX, IDC_ANSWER, answer);
 }
 
-void NewFlashcard::Initialize(CString highlight) //can take in text read by a diff function and set home function to it
-{
-	
-}
-
-
 BEGIN_MESSAGE_MAP(NewFlashcard, CDialogEx)
+	ON_BN_CLICKED(IDSHOW, &NewFlashcard::Initialize)
 END_MESSAGE_MAP()
 
 
 // NewFlashcard message handlers
+
+void NewFlashcard::Initialize() //called by main to set text in dialog box to highlightanswer
+{
+	GetDlgItem(IDC_ANSWER)->SetWindowText(answer);
+}
+
+void NewFlashcard::OnBnClickedOk()
+{
+
+	// TODO: Add your control notification handler code here
+	//GetDlgItem(IDC_EDIT1)->GetWindowText(userInput);
+	
+
+	CDialogEx::OnOK();
+}
