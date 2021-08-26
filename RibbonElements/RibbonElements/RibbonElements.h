@@ -8,11 +8,20 @@
 #endif
 
 #include "resource.h"		// main symbols
+#include <vector>
 
 
 // CRibbonElementsApp
 // See RibbonElements.cpp for the implementation of this class
 //
+
+struct card {
+	CString title = L"";
+	int pageNumber = -1;
+	CString answer = L"";
+};
+//CREATE A STRUCTURE THAT SAVES CARDS
+//std::vector<card>deck{};
 
 class CRibbonElementsApp : public CWinApp
 {
@@ -26,3 +35,4 @@ public:
 
 	static FS_DIBitmap GetBmpFromRes(UINT uID);
 };
+

@@ -27,6 +27,6 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void Initialize(); //takes the highlighted text and saves it to IDC_ANSWER so modal can load it in directly
 	afx_msg void OnBnClickedOk();
+	BOOL OnInitDialog(CString text);
 };

@@ -2,9 +2,10 @@
 #include "ElementsProc.h"
 #include "FFlashcard.h"
 #include "NewFlashcard.h"
+#include "RibbonElements.h"
 #include "resource.h"
 #include "PropertySheetPageDlg.h"
-#include <string>
+#include <vector>
 
 CElementsProc::CElementsProc(void)
 {
@@ -64,6 +65,8 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 	//DONE: turn the highlighted text into a CString and save it to temp
 	CString temp = L"";
 
+	//TODO: set up cardtemp
+
 	FR_Document pDoc = FRAppGetActiveDocOfPDDoc();
 	if (pDoc == NULL) {
 		return;
@@ -76,21 +79,20 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 
 	temp = ctext;
 
-	NewFlashcard openMenu;
-	openMenu.setAnswer(temp);
-	openMenu.DoModal();
-	
+	NewFlashcard* window = new NewFlashcard();
+	window->Create(IDD_NEWCARD, NULL);
+	window->ShowWindow(SW_NORMAL);
+
+	window->OnInitDialog(temp);
+
+	//NewFlashcard openMenu;
+	//openMenu.setAnswer(temp);
+	//openMenu.DoModal();
 
 	//CAN BE USED FOR VIEWING STORED CARDS//
 	//FS_LPCWSTR inputfile = L"C:\\Users\\Administrator\\Desktop\\PDF\\06ma.pdf";
 	//FR_Document frDocument = FRDocOpenFromFile(inputfile, (FS_LPCSTR)L"", true, true); //shows how to load a PDF and display it
 }
-
-struct card {
-	CString title = L"";
-	int pageNumber = -1;
-	CString answer = L"";
-};
 
 void CElementsProc::OnButtonExecuteProc3(void* clientDate) //go to first
 {

@@ -32,12 +32,6 @@ RibbonElements.cpp
 #endif
 
 
-//struct card {
-	//CString title = L"";
-	//int pageNumber = -1;
-	//CString answer = L"";
-//};
-
 
 //
 //TODO: If this DLL is dynamically linked against the MFC DLLs,
@@ -362,6 +356,7 @@ This action retrives the Text Select FR_Menu and adds a new menu and the menu's 
 */
 void DictionaryProc(void *pClientData, FR_Menu popUpMenu)
 {
+	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 	int nMenuItemCount = FRMenuGetMenuItemCount(popUpMenu);
 	FR_MenuItem menuItem = FRMenuItemNew((const char *)L"New Flashcard", (const wchar_t *)L"New Flashcard", NULL, false, NULL);
 	FRMenuAddMenuItem(popUpMenu, menuItem, nMenuItemCount);

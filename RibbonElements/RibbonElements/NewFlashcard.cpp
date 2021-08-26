@@ -35,23 +35,26 @@ void NewFlashcard::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(NewFlashcard, CDialogEx)
-	ON_BN_CLICKED(IDSHOW, &NewFlashcard::Initialize)
+	
 END_MESSAGE_MAP()
 
 
 // NewFlashcard message handlers
 
-void NewFlashcard::Initialize() //called by main to set text in dialog box to highlightanswer
+void NewFlashcard::OnBnClickedOk() //the new card is created
 {
-	GetDlgItem(IDC_ANSWER)->SetWindowText(answer);
-}
-
-void NewFlashcard::OnBnClickedOk()
-{
-
-	// TODO: Add your control notification handler code here
-	//GetDlgItem(IDC_EDIT1)->GetWindowText(userInput);
-	
+	card tempcard;
+	tempcard.title = question;
+	tempcard.answer = this->answer;
+	//tempcard.pageNumber = 
+	//TODO: fetch page number
+	//deck.push_back(tempcard);
 
 	CDialogEx::OnOK();
+}
+
+BOOL NewFlashcard::OnInitDialog(CString text) {
+	//window.DoModal();
+	GetDlgItem(IDC_ANSWER)->SetWindowText(text);
+	return true;
 }
