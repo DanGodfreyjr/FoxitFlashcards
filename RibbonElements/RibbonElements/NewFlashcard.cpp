@@ -35,7 +35,7 @@ void NewFlashcard::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(NewFlashcard, CDialogEx)
-	
+	ON_BN_CLICKED(IDOK, &NewFlashcard::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -54,10 +54,20 @@ void NewFlashcard::OnBnClickedOk() //the new card is created
 	if (currDoc == NULL) {
 		return;
 	}
+	struct card* ptr;
+	deck.push_back(card());
+	int position = deck.size();
+	ptr = &deck.at(position - 1);
+
+	ptr->title = this->question;
+	ptr->answer = this->answer;
+
 	FR_DocView currView = FRDocGetCurrentDocView(currDoc);
 	FR_PageView currPage = FRDocViewGetCurrentPageView(currView);
 	int k = FRPageViewGetPageIndex(currPage);
 	page = k;
+	this->page = page;
+	ptr->pageNumber = page;
 	//whatever the current page number is, is now saved to "page"
 	CDialogEx::OnOK();
 }
@@ -68,4 +78,5 @@ BOOL NewFlashcard::OnInitDialog(CString text) {
 	answer = text; //the text that has been passed in is saved to "answer"
 	return true;
 }
+
 
