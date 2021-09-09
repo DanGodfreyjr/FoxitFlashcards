@@ -14,12 +14,12 @@
 // CRibbonElementsApp
 // See RibbonElements.cpp for the implementation of this class
 //
-
+/*
 struct card {
 	CString title = L"";
 	int pageNumber = -1;
 	CString answer = L"";
-};
+};*/
 
 class CRibbonElementsApp : public CWinApp
 {
