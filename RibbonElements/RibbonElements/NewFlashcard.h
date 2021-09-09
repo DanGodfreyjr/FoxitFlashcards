@@ -5,6 +5,12 @@
 #include <string>
 // NewFlashcard dialog
 
+extern struct card {
+	CString title;
+	int pageNumber;
+	CString answer;
+};
+
 class NewFlashcard : public CDialogEx
 {
 	DECLARE_DYNAMIC(NewFlashcard)
@@ -15,6 +21,7 @@ public:
 	CString answer = L"answer here";
 	int page = -1;
 	//CString getQuestion();
+	std::vector<card> deck;
 	void setAnswer(CString temp);
 	virtual ~NewFlashcard();
 
