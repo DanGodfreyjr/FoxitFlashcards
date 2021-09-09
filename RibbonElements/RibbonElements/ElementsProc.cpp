@@ -54,9 +54,11 @@ void CElementsProc::OnButtonExecuteProc(void* clientDate)//save set
 		FS_WideString fsButtonData = (FS_WideString)clientDate;
 		FRSysShowMessageBox((FS_LPCWSTR)L"Card set and document saved. (TODO: implement save)", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 
-		FFlashcard openMenu;
-		openMenu.DoModal();
+		//FFlashcard openMenu;
+		//openMenu.DoModal();
 }
+
+std::vector<card>deck{};
 
 void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 {
@@ -85,6 +87,23 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 
 	window->OnInitDialog(temp);
 
+	//this part has to run after the window's been closed so that it actually has the values needed, how?
+	CString qstring = window->question;
+	CString astring = window->answer;
+	int pgnum = window->page;
+
+	card newCard{};
+	newCard.title = qstring;
+
+	CString t = newCard.title;
+	FS_LPCWSTR cardName = (FS_LPCWSTR)t;
+	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+
+	newCard.answer = astring;
+	newCard.pageNumber = pgnum;
+
+	deck.push_back(newCard);
+
 	//NewFlashcard openMenu;
 	//openMenu.setAnswer(temp);
 	//openMenu.DoModal();
@@ -94,37 +113,95 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 	//FR_Document frDocument = FRDocOpenFromFile(inputfile, (FS_LPCSTR)L"", true, true); //shows how to load a PDF and display it
 }
 
+int currIndex = 0;
+
 void CElementsProc::OnButtonExecuteProc3(void* clientDate) //go to first
 {
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
-	CString temp = L"Name of first card"; //cstring element of first object in data type vector
-
-	//TODO:: loops through the study set
-
-
-
-
+	currIndex = 0; //resets the current index
+	if (deck.empty()) {
+		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		return;
+	}
+	CString temp = deck[0].title; //cstring element of first object in data type vector
 
 	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
 
 	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
-
+	//TODO:: SCROLL PAGE TO ANSWER LOCATION AND HIGHLIGHT ANSWER
+	//how to control this so that it only executes after "OK" has been pressed?
 }
 
 void CElementsProc::OnButtonExecuteProc4(void* clientDate) //previous card
 {
+	if (deck.empty()) {
+		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		return;
+	}
+	if (currIndex == 0) {
+		if (deck.size() == 1) {
+			FRSysShowMessageBox((FS_LPCWSTR)L"This is the only card in your deck", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+			return;
+		}
+		FRSysShowMessageBox((FS_LPCWSTR)L"Beginning of card deck reached.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		return;
+	}
+	if (currIndex > 0 && currIndex < deck.size()) { //within bounds
+		--currIndex;
+	}
+	
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
-	FRSysShowMessageBox((FS_LPCWSTR)L"Card set and document saved. (TODO: implement save)", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
-
+	CString temp = deck[currIndex].title;
+	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
+	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+	//TODO:: SCROLL PAGE TO ANSWER LOCATION AND HIGHLIGHT ANSWER
+	//how to control this so that it only executes after "OK" has been pressed?
 }
 
 void CElementsProc::OnButtonExecuteProc5(void* clientDate) //next card
 {
-	//increments one in the vector of card objects and displays it
+	if (deck.empty()) {
+		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		return;
+	}
+	if (currIndex > -1 && currIndex < deck.size() -1) { //within bounds
+		++currIndex;
+	}
+	else if (currIndex == deck.size()-1) {
+		if (deck.size() == 1) {
+			FRSysShowMessageBox((FS_LPCWSTR)L"This is the only card in your deck", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+			return;
+		}
+		FRSysShowMessageBox((FS_LPCWSTR)L"End of card deck reached.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		return;
+	}
+	FS_WideString fsButtonData = (FS_WideString)clientDate;
+	CString temp = deck[currIndex].title;
+	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
+	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+	//TODO:: SCROLL PAGE TO ANSWER LOCATION AND HIGHLIGHT ANSWER
+	//how to control this so that it only executes after "OK" has been pressed?
 }
 
 void CElementsProc::OnButtonExecuteProc6(void* clientDate) //delete card
 {
+	if (deck.empty()) {
+		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		return;
+	}
+	auto it1 = deck.begin()+currIndex;
+	deck.erase(it1);
+	if (deck.empty()) {
+		FRSysShowMessageBox((FS_LPCWSTR)L"Card deleted. Your deck is now empty.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+		currIndex = 0;
+		return;
+	}
+	if (currIndex >= deck.size())
+	--currIndex;
+	if (deck.size() == 0) {
+		FRSysShowMessageBox((FS_LPCWSTR)L"Card deleted.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+	}
+	
 	//moves view to adjacent card (if next card exists, next. if not, previous, if last card in stack, delete in place)
 
 }

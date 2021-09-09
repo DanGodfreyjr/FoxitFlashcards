@@ -11,11 +11,13 @@ class NewFlashcard : public CDialogEx
 
 public:
 	NewFlashcard(CWnd* pParent = nullptr);   // standard constructor
-	CString question;
-	CString answer;
+	CString question = L"question here";
+	CString answer = L"answer here";
+	int page = -1;
 	//CString getQuestion();
 	void setAnswer(CString temp);
 	virtual ~NewFlashcard();
+	std::vector<card>deck{};
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -29,4 +31,5 @@ protected:
 public:
 	afx_msg void OnBnClickedOk();
 	BOOL OnInitDialog(CString text);
+	
 };

@@ -43,18 +43,29 @@ END_MESSAGE_MAP()
 
 void NewFlashcard::OnBnClickedOk() //the new card is created
 {
-	card tempcard;
-	tempcard.title = question;
-	tempcard.answer = this->answer;
-	//tempcard.pageNumber = 
-	//TODO: fetch page number
-	//deck.push_back(tempcard);
-
+	//whatever text is in the box, is now saved to "question"
+	CString temp;
+	GetDlgItem(IDC_QUESTION)->GetWindowText(temp);
+	if (temp == "") {
+		return;
+	}
+	question = temp;
+	FR_Document currDoc = FRAppGetActiveDocOfPDDoc();
+	if (currDoc == NULL) {
+		return;
+	}
+	FR_DocView currView = FRDocGetCurrentDocView(currDoc);
+	FR_PageView currPage = FRDocViewGetCurrentPageView(currView);
+	int k = FRPageViewGetPageIndex(currPage);
+	page = k;
+	//whatever the current page number is, is now saved to "page"
 	CDialogEx::OnOK();
 }
 
 BOOL NewFlashcard::OnInitDialog(CString text) {
 	//window.DoModal();
 	GetDlgItem(IDC_ANSWER)->SetWindowText(text);
+	answer = text; //the text that has been passed in is saved to "answer"
 	return true;
 }
+

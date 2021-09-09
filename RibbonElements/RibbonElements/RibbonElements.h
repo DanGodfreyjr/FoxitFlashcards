@@ -20,14 +20,11 @@ struct card {
 	int pageNumber = -1;
 	CString answer = L"";
 };
-//CREATE A STRUCTURE THAT SAVES CARDS
-//std::vector<card>deck{};
 
 class CRibbonElementsApp : public CWinApp
 {
 public:
 	CRibbonElementsApp();
-
 	DECLARE_MESSAGE_MAP()
 public:
 	void CreateElementsToNewCategory();

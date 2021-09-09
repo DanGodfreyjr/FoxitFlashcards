@@ -158,6 +158,15 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 
 	//FR_RibbonElement fr_ElementSubItem = FRRibbonPanelGetElementByName(fr_Panel, "Card");
 	
+	//CREATE A STRUCTURE THAT SAVES CARDS
+	
+	//card newCard{};
+
+	//newCard.title = L"hi";
+
+	//deck.push_back(newCard);
+
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Create a Ribbon button
 	FS_INT32 nElementCount2 = FRRibbonPanelGetElementCount(fr_Panel);

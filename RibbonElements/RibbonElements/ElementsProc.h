@@ -24,5 +24,6 @@ public:
 	static HWND FRRibbonBackstageCreateProc(HWND hParentWnd, void* clientData);
 	static void FRRibbonBackstageDestoryProc(void* pDialog, void* clientData);
 	
+	
 };
 
