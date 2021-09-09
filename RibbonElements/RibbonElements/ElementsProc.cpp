@@ -58,7 +58,9 @@ void CElementsProc::OnButtonExecuteProc(void* clientDate)//save set
 		//openMenu.DoModal();
 }
 
-std::vector<card>deck{};
+//std::vector<card>deck{};
+NewFlashcard* window = new NewFlashcard();
+BOOL isCreated = false;
 
 void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 {
@@ -81,12 +83,17 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 
 	temp = ctext;
 
-	NewFlashcard* window = new NewFlashcard();
-	window->Create(IDD_NEWCARD, NULL);
+
+	
+	
+	if (isCreated == false) {
+		window->Create(IDD_NEWCARD, NULL);
+		isCreated = true;
+	}
 	window->ShowWindow(SW_NORMAL);
 
 	window->OnInitDialog(temp);
-
+/*
 	//this part has to run after the window's been closed so that it actually has the values needed, how?
 	CString qstring = window->question;
 	CString astring = window->answer;
@@ -102,7 +109,7 @@ void CElementsProc::OnButtonExecuteProc2(void* clientDate) //new card
 	newCard.answer = astring;
 	newCard.pageNumber = pgnum;
 
-	deck.push_back(newCard);
+	deck.push_back(newCard);*/
 
 	//NewFlashcard openMenu;
 	//openMenu.setAnswer(temp);
@@ -119,11 +126,11 @@ void CElementsProc::OnButtonExecuteProc3(void* clientDate) //go to first
 {
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
 	currIndex = 0; //resets the current index
-	if (deck.empty()) {
+	if (window->deck.empty()) {
 		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 		return;
 	}
-	CString temp = deck[0].title; //cstring element of first object in data type vector
+	CString temp = window->deck[0].title; //cstring element of first object in data type vector
 
 	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
 
@@ -134,24 +141,24 @@ void CElementsProc::OnButtonExecuteProc3(void* clientDate) //go to first
 
 void CElementsProc::OnButtonExecuteProc4(void* clientDate) //previous card
 {
-	if (deck.empty()) {
+	if (window->deck.empty()) {
 		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 		return;
 	}
 	if (currIndex == 0) {
-		if (deck.size() == 1) {
+		if (window->deck.size() == 1) {
 			FRSysShowMessageBox((FS_LPCWSTR)L"This is the only card in your deck", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 			return;
 		}
 		FRSysShowMessageBox((FS_LPCWSTR)L"Beginning of card deck reached.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 		return;
 	}
-	if (currIndex > 0 && currIndex < deck.size()) { //within bounds
+	if (currIndex > 0 && currIndex < window->deck.size()) { //within bounds
 		--currIndex;
 	}
 	
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
-	CString temp = deck[currIndex].title;
+	CString temp = window->deck[currIndex].title;
 	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
 	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 	//TODO:: SCROLL PAGE TO ANSWER LOCATION AND HIGHLIGHT ANSWER
@@ -160,15 +167,15 @@ void CElementsProc::OnButtonExecuteProc4(void* clientDate) //previous card
 
 void CElementsProc::OnButtonExecuteProc5(void* clientDate) //next card
 {
-	if (deck.empty()) {
+	if (window->deck.empty()) {
 		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 		return;
 	}
-	if (currIndex > -1 && currIndex < deck.size() -1) { //within bounds
+	if (currIndex > -1 && currIndex < window->deck.size() -1) { //within bounds
 		++currIndex;
 	}
-	else if (currIndex == deck.size()-1) {
-		if (deck.size() == 1) {
+	else if (currIndex == window->deck.size()-1) {
+		if (window->deck.size() == 1) {
 			FRSysShowMessageBox((FS_LPCWSTR)L"This is the only card in your deck", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 			return;
 		}
@@ -176,7 +183,7 @@ void CElementsProc::OnButtonExecuteProc5(void* clientDate) //next card
 		return;
 	}
 	FS_WideString fsButtonData = (FS_WideString)clientDate;
-	CString temp = deck[currIndex].title;
+	CString temp = window->deck[currIndex].title;
 	FS_LPCWSTR cardName = (FS_LPCWSTR)temp;
 	FRSysShowMessageBox(cardName, MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 	//TODO:: SCROLL PAGE TO ANSWER LOCATION AND HIGHLIGHT ANSWER
@@ -185,20 +192,20 @@ void CElementsProc::OnButtonExecuteProc5(void* clientDate) //next card
 
 void CElementsProc::OnButtonExecuteProc6(void* clientDate) //delete card
 {
-	if (deck.empty()) {
+	if (window->deck.empty()) {
 		FRSysShowMessageBox((FS_LPCWSTR)L"There are no cards in the current deck.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 		return;
 	}
-	auto it1 = deck.begin()+currIndex;
-	deck.erase(it1);
-	if (deck.empty()) {
+	auto it1 = window->deck.begin()+currIndex;
+	window->deck.erase(it1);
+	if (window->deck.empty()) {
 		FRSysShowMessageBox((FS_LPCWSTR)L"Card deleted. Your deck is now empty.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 		currIndex = 0;
 		return;
 	}
-	if (currIndex >= deck.size())
+	if (currIndex >= window->deck.size())
 	--currIndex;
-	if (deck.size() == 0) {
+	if (window->deck.size() == 0) {
 		FRSysShowMessageBox((FS_LPCWSTR)L"Card deleted.", MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 	}
 	
