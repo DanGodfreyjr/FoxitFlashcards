@@ -17,7 +17,6 @@ public:
 	//CString getQuestion();
 	void setAnswer(CString temp);
 	virtual ~NewFlashcard();
-	std::vector<card>deck{};
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
