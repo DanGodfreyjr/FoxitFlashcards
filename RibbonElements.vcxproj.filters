@@ -57,6 +57,9 @@
     <ClCompile Include="NewFlashcard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="quizBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RibbonElements.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NewFlashcard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quizBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

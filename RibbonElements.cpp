@@ -217,6 +217,15 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 	FR_RibbonElement fr_ElementButton6 = FRRibbonPanelGetElementByName(fr_Panel, "Delete Card");
 	FRRibbonElementSetImage(fr_ElementButton6, fs_bitmap2, fs_bitmap2);
 	FRRibbonElementSetTooltip(fr_ElementButton6, (FS_LPCWSTR)L"Deletes the current flashcard and displays the next flashcard");
+
+	FS_INT32 nElementCount7 = FRRibbonPanelGetElementCount(fr_Panel);
+	// int type getelementcount of ribbonpanel named nelementcount2
+	FR_RibbonButton fr_Button7 = (FR_RibbonButton)FRRibbonPanelAddElement(fr_Panel, FR_RIBBON_BUTTON,
+		"Start Quiz", (FS_LPCWSTR)L"Start Quiz", nElementCount7);
+
+	FR_RibbonElement fr_ElementButton7 = FRRibbonPanelGetElementByName(fr_Panel, "Start Quiz");
+	FRRibbonElementSetImage(fr_ElementButton7, fs_bitmap2, fs_bitmap2);
+	FRRibbonElementSetTooltip(fr_ElementButton7, (FS_LPCWSTR)L"Runs through deck of flashcards to quiz you");
 	//FR_RibbonButton fr_SubItem2 = (FR_RibbonButton)FRRibbonElementAddSubItem(fr_ElementButton2, FR_RIBBON_BUTTON,
 	//	"All Terms", (FS_LPCWSTR)L"All Terms", -1, TRUE, FALSE, FALSE);
 	//FR_RibbonButton fr_SubItem3 = (FR_RibbonButton)FRRibbonElementAddSubItem(fr_ElementButton2, FR_RIBBON_BUTTON,
@@ -248,6 +257,7 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 
 	FRRibbonElementSetExecuteProc(fr_ElementButton6, CElementsProc::OnButtonExecuteProc6);//delete card; deletes current card
 
+	FRRibbonElementSetExecuteProc(fr_ElementButton7, CElementsProc::OnButtonExecuteProc7);//starts quiz
 	FSDIBitmapDestroy(fs_bitmap);
 }
 

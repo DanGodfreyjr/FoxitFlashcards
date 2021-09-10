@@ -3,6 +3,7 @@
 #include "FFlashcard.h"
 #include "NewFlashcard.h"
 #include "RibbonElements.h"
+#include "quizBox.h"
 #include "resource.h"
 #include "PropertySheetPageDlg.h"
 #include <vector>
@@ -211,6 +212,16 @@ void CElementsProc::OnButtonExecuteProc6(void* clientDate) //delete card
 	
 	//moves view to adjacent card (if next card exists, next. if not, previous, if last card in stack, delete in place)
 
+}
+quizBox* quizWindow = new quizBox();
+void CElementsProc::OnButtonExecuteProc7(void* clientDate) {
+	
+	quizWindow->Create(IDD_DIALOG5, NULL);
+	quizWindow->ShowWindow(SW_NORMAL);
+	quizWindow->setDeck(window->deck);
+	//quizWindow->OnInitDialog();
+
+	
 }
 FS_BOOL CElementsProc::OnButtonMarkedProc(void* clientDate)
 {

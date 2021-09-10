@@ -18,6 +18,7 @@ public:
 	static void OnButtonExecuteProc4(void * clientDate);
 	static void OnButtonExecuteProc5(void * clientDate);
 	static void OnButtonExecuteProc6(void * clientDate);
+	static void OnButtonExecuteProc7(void* clientDate);
 	static FS_BOOL OnButtonMarkedProc(void* clientDate);
 	static FS_BOOL OnButtonEnableProc(void* clientDate);
 

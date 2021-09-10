@@ -141,6 +141,7 @@ regedit.exe /s "$(SolutionDir)..\..\Tools\register$(ProjectName).reg"</Command>
     <ClCompile Include="FFlashcard.cpp" />
     <ClCompile Include="NewFlashcard.cpp" />
     <ClCompile Include="PropertySheetPageDlg.cpp" />
+    <ClCompile Include="quizBox.cpp" />
     <ClCompile Include="RibbonElements.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -153,6 +154,7 @@ regedit.exe /s "$(SolutionDir)..\..\Tools\register$(ProjectName).reg"</Command>
     <ClInclude Include="FFlashcard.h" />
     <ClInclude Include="NewFlashcard.h" />
     <ClInclude Include="PropertySheetPageDlg.h" />
+    <ClInclude Include="quizBox.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RibbonElements.h" />
     <ClInclude Include="stdafx.h" />
