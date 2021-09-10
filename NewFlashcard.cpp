@@ -69,6 +69,7 @@ void NewFlashcard::OnBnClickedOk() //the new card is created
 	this->page = page;
 	ptr->pageNumber = page;
 	//whatever the current page number is, is now saved to "page"
+	GetDlgItem(IDC_QUESTION)->SetWindowText(L"");
 	CDialogEx::OnOK();
 }
 
