@@ -1,7 +1,7 @@
 // NewFlashcard.cpp : implementation file
 //
 
-#include "pch.h"
+//#include "pch.h"
 #include "stdafx.h"
 #include "RibbonElements.h"
 #include "NewFlashcard.h"

@@ -9,6 +9,7 @@ extern struct card {
 	CString title;
 	int pageNumber;
 	CString answer;
+	BOOL correct = false;
 };
 
 class NewFlashcard : public CDialogEx

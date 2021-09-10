@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "RibbonElements.h"
 #include "quizBox.h"
+#include "resultBox.h"
 #include "afxdialogex.h"
 
 
@@ -140,13 +141,21 @@ void quizBox::setDeck(std::vector<card> cardVec) {
 	//FRSysShowMessageBox(FSWideStringCastToLPCWSTR(fsShowTop), MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
 
 }
+resultBox *resultWindow = new resultBox();
 void quizBox::nextCard() {
 	this->cardNumber= cardNumber+1;
-	wchar_t cNum[256];
-	swprintf_s(cNum, L"%d", this->cardNumber);
-	FS_WideString fsShowTop = FSWideStringNew3(cNum, wcslen(cNum) * sizeof(WCHAR));
-	GetDlgItem(IDC_EDIT1)->SetWindowText(this->cardDeck.at(this->cardNumber).title);
-	//FRSysShowMessageBox(FSWideStringCastToLPCWSTR(fsShowTop), MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+	if (this->cardNumber == this->cardDeck.size()) {
+		resultWindow->Create(IDD_DIALOG6);
+		resultWindow->ShowWindow(SW_NORMAL);
+		resultWindow->setDeck(this->cardDeck);
+	}
+	else {
+		wchar_t cNum[256];
+		swprintf_s(cNum, L"%d", this->cardNumber);
+		FS_WideString fsShowTop = FSWideStringNew3(cNum, wcslen(cNum) * sizeof(WCHAR));
+		GetDlgItem(IDC_EDIT1)->SetWindowText(this->cardDeck.at(this->cardNumber).title);
+		//FRSysShowMessageBox(FSWideStringCastToLPCWSTR(fsShowTop), MB_OK | MB_ICONINFORMATION, NULL, NULL, FRAppGetMainFrameWnd());
+	}
 }
 
 void quizBox::OnEnChangeEdit1()
@@ -168,7 +177,9 @@ void quizBox::OnEnChangeEdit1()
 void quizBox::OnBnClickedButton2()
 {
 	// TODO: Add your control notification handler code here
+	this->cardDeck.at(this->cardNumber).correct = true;
 	this->nextCard();
+
 }
 
 

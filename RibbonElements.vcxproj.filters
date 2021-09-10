@@ -60,6 +60,9 @@
     <ClCompile Include="quizBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="resultBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RibbonElements.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="quizBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resultBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
