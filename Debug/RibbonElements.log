@@ -1,0 +1,23 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  stdafx.cpp
+  PIMain.cpp
+  ElementsProc.cpp
+c:\program files (x86)\samples\ribbonelements\ribbonelements\newflashcard.h(12): warning C4091: 'extern ': ignored on left of 'card' when no variable is declared
+c:\program files (x86)\samples\ribbonelements\ribbonelements\elementsproc.cpp(156): warning C4018: '<': signed/unsigned mismatch
+c:\program files (x86)\samples\ribbonelements\ribbonelements\elementsproc.cpp(174): warning C4018: '<': signed/unsigned mismatch
+c:\program files (x86)\samples\ribbonelements\ribbonelements\elementsproc.cpp(206): warning C4018: '>=': signed/unsigned mismatch
+  FFlashcard.cpp
+  NewFlashcard.cpp
+c:\program files (x86)\samples\ribbonelements\ribbonelements\newflashcard.h(12): warning C4091: 'extern ': ignored on left of 'card' when no variable is declared
+  PropertySheetPageDlg.cpp
+  RibbonElements.cpp
+c:\program files (x86)\samples\ribbonelements\ribbonelements\newflashcard.h(12): warning C4091: 'extern ': ignored on left of 'card' when no variable is declared
+  Generating Code...
+     Creating library C:\Program Files (x86)\Foxit Software\Foxit PhantomPDF\plugins\RibbonElements.lib and object C:\Program Files (x86)\Foxit Software\Foxit PhantomPDF\plugins\RibbonElements.exp
+  RibbonElements.vcxproj -> C:\Program Files (x86)\Foxit Software\Foxit PhantomPDF\plugins\RibbonElements.fpi
+  
+  
+  Secceed to sign the plugin!
+  
+  
+  
