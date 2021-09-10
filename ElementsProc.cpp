@@ -190,7 +190,7 @@ void CElementsProc::OnButtonExecuteProc5(void* clientDate) //next card
 	//TODO:: SCROLL PAGE TO ANSWER LOCATION AND HIGHLIGHT ANSWER
 	//how to control this so that it only executes after "OK" has been pressed?
 }
-
+quizBox* quizWindow = new quizBox();
 void CElementsProc::OnButtonExecuteProc6(void* clientDate) //delete card
 {
 	if (window->deck.empty()) {
@@ -213,7 +213,7 @@ void CElementsProc::OnButtonExecuteProc6(void* clientDate) //delete card
 	//moves view to adjacent card (if next card exists, next. if not, previous, if last card in stack, delete in place)
 
 }
-quizBox* quizWindow = new quizBox();
+
 void CElementsProc::OnButtonExecuteProc7(void* clientDate) {
 	
 	quizWindow->Create(IDD_DIALOG5, NULL);

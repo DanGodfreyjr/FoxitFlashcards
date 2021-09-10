@@ -48,7 +48,7 @@
     </IgnoreImportLibrary>
     <TargetExt>.fpi</TargetExt>
     <EmbedManifest>false</EmbedManifest>
-    <OutDir>C:\Program Files (x86)\Foxit Software\Foxit PhantomPDF\plugins</OutDir>
+    <OutDir>C:\Program Files (x86)\Foxit Software\Foxit PDF Editor\plugins</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -74,7 +74,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>.\RibbonElements.def</ModuleDefinitionFile>
-      <OutputFile>$(ProgramFiles)\Foxit Software\Foxit PhantomPDF\plugins\$(ProjectName)$(TargetExt)</OutputFile>
+      <OutputFile>$(ProgramFiles)\Foxit Software\Foxit PDF Editor\plugins\$(ProjectName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
@@ -92,8 +92,8 @@
       <Command>"$(SolutionDir)..\..\Tools\SignPlugIn.bat" $(ProjectName)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>tasklist /fi "imagename eq FoxitPhantomPDF.exe" |find ":" &gt; nul
-if errorlevel 1 taskkill /f /im "FoxitPhantomPDF.exe"
+      <Command>tasklist /fi "imagename eq FoxitPDFEditor.exe" |find ":" &gt; nul
+if errorlevel 1 taskkill /f /im "FoxitPDFEditor.exe"
 regedit.exe /s "$(SolutionDir)..\..\Tools\register$(ProjectName).reg"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>

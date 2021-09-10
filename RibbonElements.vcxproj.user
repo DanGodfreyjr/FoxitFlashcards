@@ -3,4 +3,8 @@
   <PropertyGroup>
     <RESOURCE_FILE>RibbonElements.rc</RESOURCE_FILE>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>$(ProgramFiles)\Foxit Software\Foxit PDF Editor\FoxitPDFEditor.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>

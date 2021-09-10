@@ -38,7 +38,7 @@ END_MESSAGE_MAP()
 
 
 // quizBox message handlers
-
+FR_Annot* highlight;
 FR_Annot AddHighlightAnnot(FR_PageView frPageView, FS_FloatRect rect, FS_LPCWSTR displayText, FR_Document doc) {
 
 	//FR_DocView docView = FRPageViewGetDocView(frPageView);
@@ -109,6 +109,7 @@ FR_Annot AddHighlightAnnot(FR_PageView frPageView, FS_FloatRect rect, FS_LPCWSTR
 }
 void quizBox::OnBnClickedButton1()
 {
+
 	// TODO: Add your control notification handler code here
 	FR_Document pDoc = FRAppGetActiveDocOfPDDoc();
 	FR_DocView docView = FRDocGetCurrentDocView(pDoc);
@@ -127,7 +128,7 @@ void quizBox::OnBnClickedButton1()
 
 	FPDProgressiveSearchFindFrom(sch, fpdPage, (FS_LPCWSTR)(this->cardDeck.at(this->cardNumber).answer), 0, FPDTEXT_CONSECUTIVE, NULL);
 	FS_FloatRect firstRect = FPDProgressiveSearchGetRect(sch, 0);
-	AddHighlightAnnot(pageView, firstRect, L" ", pDoc);
+	*highlight = AddHighlightAnnot(pageView, firstRect, L" ", pDoc);
 }
 void quizBox::setDeck(std::vector<card> cardVec) {
 	for (int x = 0; x < cardVec.size(); x++) {
