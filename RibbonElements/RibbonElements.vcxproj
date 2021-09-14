@@ -127,10 +127,17 @@ regedit.exe /s "$(SolutionDir)..\..\Tools\register$(ProjectName).reg"</Command>
   <ItemGroup>
     <None Include="cert.txt" />
     <None Include="ReadMe.txt" />
+    <None Include="res\delcard.pdf" />
+    <None Include="res\gtfirst.pdf" />
+    <None Include="res\newcard.pdf" />
+    <None Include="res\nextcard.pdf" />
+    <None Include="res\prevcard.pdf" />
+    <None Include="res\quiz.pdf" />
     <None Include="res\RibbonElements.rc2" />
     <None Include="res\RMS_16.png" />
     <None Include="res\RMS_24.png" />
     <None Include="res\RMS_32.png" />
+    <None Include="res\saveset.pdf" />
     <None Include="res\saygoodbye16.pdf" />
     <None Include="res\sayhello16.pdf" />
     <None Include="RibbonElements.def" />

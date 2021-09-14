@@ -17,6 +17,7 @@ public:
 	int cardNumber=0;
 	void nextCard();
 	void nextQuizCard();
+
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_DIALOG5 };

@@ -134,9 +134,12 @@ void quizBox::OnBnClickedButton1()
 }
 
 std::vector<int> order;
-
+int currOrder = 0;
 
 void quizBox::setDeck(std::vector<card> cardVec) {
+	this->cardDeck.clear(); //resets cardDeck at the start of every iteration
+	order.clear();
+	currOrder = 0;
 
 	for (int x = 0; x < cardVec.size(); x++) {
 		this->cardDeck.push_back(cardVec.at(x));
@@ -223,7 +226,8 @@ void quizBox::OnEnChangeEdit1()
 void quizBox::OnBnClickedButton2() //correct
 {
 	// TODO: Add your control notification handler code here
-	this->cardDeck.at(this->cardNumber).correct = true;
+	this->cardDeck.at(order.at(currOrder)).correct = true;
+	++currOrder;
 	this->nextCard();
 
 }
@@ -232,5 +236,6 @@ void quizBox::OnBnClickedButton2() //correct
 void quizBox::OnBnClickedButton3() //incorrect
 {
 	// TODO: Add your control notification handler code here
+	++currOrder;
 	this->nextCard();
 }

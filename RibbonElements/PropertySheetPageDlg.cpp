@@ -72,6 +72,11 @@ BOOL PropertySheetPageDlg::OnInitDialog()
 	
 	FS_DIBitmap fs_bitmap = CRibbonElementsApp::GetBmpFromRes(IDR_PDF1);
 	FS_DIBitmap fs_bitmap2 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF2);
+	FS_DIBitmap fs_bitmap3 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF3);
+	FS_DIBitmap fs_bitmap4 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF4);
+	FS_DIBitmap fs_bitmap5 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF5);
+	FS_DIBitmap fs_bitmap6 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF6);
+	FS_DIBitmap fs_bitmap7 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF7);
 	FS_INT32 fs_imageIndex = FRRibbonStyleListBoxAddImage(m_ribbonListBox, fs_bitmap);
 	FRRibbonStyleListBoxAddString(m_ribbonListBox, (FS_LPCWSTR)L"ListBoxItem1", fs_imageIndex);
 	FRRibbonStyleListBoxAddString(m_ribbonListBox, (FS_LPCWSTR)L"ListBoxItem2", fs_imageIndex);	

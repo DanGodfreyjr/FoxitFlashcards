@@ -34,6 +34,13 @@
     <None Include="cert.txt" />
     <None Include="res\sayhello16.pdf" />
     <None Include="res\saygoodbye16.pdf" />
+    <None Include="res\saveset.pdf" />
+    <None Include="res\newcard.pdf" />
+    <None Include="res\gtfirst.pdf" />
+    <None Include="res\prevcard.pdf" />
+    <None Include="res\nextcard.pdf" />
+    <None Include="res\delcard.pdf" />
+    <None Include="res\quiz.pdf" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RibbonElements.cpp">

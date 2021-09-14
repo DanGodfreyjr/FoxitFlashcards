@@ -119,7 +119,11 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 {
 	FS_DIBitmap fs_bitmap = CRibbonElementsApp::GetBmpFromRes(IDR_PDF1);
 	FS_DIBitmap fs_bitmap2 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF2);
-	//made a new fs_dibitmap object for delete card icon
+	FS_DIBitmap fs_bitmap3 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF3);
+	FS_DIBitmap fs_bitmap4 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF4);
+	FS_DIBitmap fs_bitmap5 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF5);
+	FS_DIBitmap fs_bitmap6 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF6);
+	FS_DIBitmap fs_bitmap7 = CRibbonElementsApp::GetBmpFromRes(IDR_PDF7);
 
 	FR_RibbonBar fr_Bar = FRAppGetRibbonBar(NULL); //The RibbonBar will free by Foixt Reader or Phantom.
 	//refers to the top bar of the pdf editor so addcategory knows which to add to
@@ -185,7 +189,7 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 		"Go to First", (FS_LPCWSTR)L"Go to First", nElementCount3);
 
 	FR_RibbonElement fr_ElementButton3 = FRRibbonPanelGetElementByName(fr_Panel, "Go to First");
-	FRRibbonElementSetImage(fr_ElementButton3, fs_bitmap2, fs_bitmap2);
+	FRRibbonElementSetImage(fr_ElementButton3, fs_bitmap3, fs_bitmap3);
 	FRRibbonElementSetTooltip(fr_ElementButton3, (FS_LPCWSTR)L"Displays the first flashcard");
 
 	//Create a Ribbon button
@@ -195,7 +199,7 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 		"Previous Card", (FS_LPCWSTR)L"Previous Card", nElementCount4);
 
 	FR_RibbonElement fr_ElementButton4 = FRRibbonPanelGetElementByName(fr_Panel, "Previous Card");
-	FRRibbonElementSetImage(fr_ElementButton4, fs_bitmap2, fs_bitmap2);
+	FRRibbonElementSetImage(fr_ElementButton4, fs_bitmap4, fs_bitmap4);
 	FRRibbonElementSetTooltip(fr_ElementButton4, (FS_LPCWSTR)L"View the flashcard before the currently displayed flashcard");
 
 	//Create a Ribbon button
@@ -205,7 +209,7 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 		"Next Card", (FS_LPCWSTR)L"Next Card", nElementCount5);
 
 	FR_RibbonElement fr_ElementButton5 = FRRibbonPanelGetElementByName(fr_Panel, "Next Card");
-	FRRibbonElementSetImage(fr_ElementButton5, fs_bitmap, fs_bitmap);
+	FRRibbonElementSetImage(fr_ElementButton5, fs_bitmap5, fs_bitmap5);
 	FRRibbonElementSetTooltip(fr_ElementButton5, (FS_LPCWSTR)L"View the next flashcard");
 
 	//Create a Ribbon button
@@ -215,7 +219,7 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 		"Delete Card", (FS_LPCWSTR)L"Delete Card", nElementCount6);
 
 	FR_RibbonElement fr_ElementButton6 = FRRibbonPanelGetElementByName(fr_Panel, "Delete Card");
-	FRRibbonElementSetImage(fr_ElementButton6, fs_bitmap2, fs_bitmap2);
+	FRRibbonElementSetImage(fr_ElementButton6, fs_bitmap6, fs_bitmap6);
 	FRRibbonElementSetTooltip(fr_ElementButton6, (FS_LPCWSTR)L"Deletes the current flashcard and displays the next flashcard");
 
 	FS_INT32 nElementCount7 = FRRibbonPanelGetElementCount(fr_Panel);
@@ -224,7 +228,7 @@ void CRibbonElementsApp::CreateElementsToNewCategory()
 		"Start Quiz", (FS_LPCWSTR)L"Start Quiz", nElementCount7);
 
 	FR_RibbonElement fr_ElementButton7 = FRRibbonPanelGetElementByName(fr_Panel, "Start Quiz");
-	FRRibbonElementSetImage(fr_ElementButton7, fs_bitmap2, fs_bitmap2);
+	FRRibbonElementSetImage(fr_ElementButton7, fs_bitmap7, fs_bitmap7);
 	FRRibbonElementSetTooltip(fr_ElementButton7, (FS_LPCWSTR)L"Runs through deck of flashcards to quiz you");
 	//FR_RibbonButton fr_SubItem2 = (FR_RibbonButton)FRRibbonElementAddSubItem(fr_ElementButton2, FR_RIBBON_BUTTON,
 	//	"All Terms", (FS_LPCWSTR)L"All Terms", -1, TRUE, FALSE, FALSE);
