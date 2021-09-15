@@ -8,6 +8,7 @@
 #include "resultBox.h"
 #include "afxdialogex.h"
 #include <vector>
+#include <ctime>
 #include <algorithm>
 
 
@@ -150,7 +151,17 @@ void quizBox::setDeck(std::vector<card> cardVec) {
 	for (int i = 0; i < cardVec.size(); ++i) {
 		order.push_back(i);
 	}
-	std::random_shuffle(order.begin(), order.end());
+	srand(time(NULL));
+	//generate a random number, then shuffle the random number's amount of times
+
+	int randomgen = rand() % 10 + 1;
+
+	for (int i = 0; i < randomgen; ++i) {
+		std::random_shuffle(order.begin(), order.end());
+	}
+
+
+
 
 
 	wchar_t page[256];
