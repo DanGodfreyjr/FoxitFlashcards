@@ -21,6 +21,12 @@ Previous Card - loads the card before the current card \
 Next Card - loads the card after the current card \
 Delete Card - deletes the current loaded card \
 Quiz Mode - launches the quiz window; shuffles the flashcard deck \
+\
+![](https://i.snipboard.io/Eqst3Z.jpg)
+\
+![](https://i.snipboard.io/lz5E4C.jpg)
+
+
 
 ## Additional Development
 Open RibbonElements project folder in Visual Studio Code 2017 (version specific) \
